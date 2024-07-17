@@ -3,10 +3,11 @@
     <nav>
       <span>가계부 프로젝트</span>
       <ul>
-        <li><a href=".">메인</a></li>
-        <li><a href=".">월별 내역</a></li>
-        <li><a href=".">일별 내역</a></li>
-        <li><a href=".">로그인</a></li>
+        <li><a href="/">메인</a></li>
+        <li><a href="/account/today">오늘</a></li>
+        <li><a href="/account/month">월별</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/register">회원가입</a></li>
       </ul>
     </nav>
   </header>
