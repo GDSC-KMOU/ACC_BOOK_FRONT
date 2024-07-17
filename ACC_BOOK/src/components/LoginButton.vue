@@ -24,7 +24,7 @@
         return res.json();
       }).then(function(data) {
         if(data && data.success === "yes") {
-          if(data.data === "") {
+          if(data.data === true) {
             this.loginCheck = true;
           }
         }

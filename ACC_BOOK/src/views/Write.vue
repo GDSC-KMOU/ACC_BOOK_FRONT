@@ -1,7 +1,7 @@
 <template>
   <select id="select_field">
-    <option value="+">+</option>
-    <option value="-">-</option>
+    <option value="+">수입</option>
+    <option value="-">지출</option>
   </select>
   <br>
   <input id="amount_field" type="number" placeholder="금액">
