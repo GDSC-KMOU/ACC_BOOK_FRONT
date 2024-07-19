@@ -1,3 +1,5 @@
+"use strict";
+
 export default function dateGet(returnType = 0) {
   const today = new Date();
       

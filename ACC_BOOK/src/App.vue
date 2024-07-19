@@ -6,8 +6,7 @@
         <li><a href="/">메인</a></li>
         <li><a href="/account/today">오늘</a></li>
         <li><a href="/account/month">월별</a></li>
-        <li><a href="/login">로그인</a></li>
-        <li><a href="/register">회원가입</a></li>
+        <LoginButton />
       </ul>
     </nav>
   </header>
@@ -22,3 +21,16 @@
     </nav>
   </footer>
 </template>
+
+<script>
+  "use strict";
+  
+  import LoginButton from '@/components/LoginButton.vue';
+
+  export default {
+    name: 'Home',
+    components: {
+      LoginButton
+    }
+  };
+</script>

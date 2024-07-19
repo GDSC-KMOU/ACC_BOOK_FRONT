@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  "use strict";
+
   import TodayDate from '@/components/TodayDate.vue';
   import Balance from '@/components/Balance.vue';
 
@@ -15,5 +17,5 @@
       TodayDate,
       Balance
     }
-  };
+  }
 </script>

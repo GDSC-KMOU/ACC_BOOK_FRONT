@@ -3,6 +3,8 @@
 </template>
 
 <script>
+  "use strict";
+
   import dateGet from '@/utils/date.js';
 
   export default {

@@ -28,6 +28,8 @@
 </template>
 
 <script>
+  "use strict";
+
   import requestURL from '@/utils/requestURL.js';
   import dateGet from '@/utils/date.js';
 
@@ -49,10 +51,11 @@
         }
         console.log(url);
 
-        fetch(requestURL() + "/account/today/" + url).then(function(res) {
+        fetch(requestURL() + "/detail/today/" + url).then(function(res) {
           return res.json();
         }).then(function(data) {
-          if(data && data.success === "yes") {
+          console.log(data);
+          if(data) {
             this.items = data.data;
           }
         }).catch(function(e) {

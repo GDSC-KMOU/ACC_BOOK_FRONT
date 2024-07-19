@@ -3,6 +3,8 @@
 </template>
 
 <script>
+  "use strict";
+  
   export default {
     name: 'Balance',
     data() {

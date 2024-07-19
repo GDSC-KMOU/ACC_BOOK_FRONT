@@ -1,12 +1,14 @@
 <template>
   <input id="id_field" type="text" placeholder="아이디" />
   <br />
-  <input id="password_field" type="text" placeholder="비밀번호" />
+  <input id="password_field" type="password" placeholder="비밀번호" />
   <br />
   <button @click="send_request()">로그인</button>
 </template>
 
 <script>
+  "use strict";
+  
   import requestURL from '@/utils/requestURL.js';
 
   export default {
@@ -19,9 +21,12 @@
         fetch(requestURL() + "/login", {
           method: "POST",
           body: JSON.stringify({
-            id: id,
+            userId: id,
             password: password,
           }),
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }
         }).then(function(res) {
           return res.json();
         }).then(function(data) {

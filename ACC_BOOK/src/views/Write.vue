@@ -12,7 +12,10 @@
 </template>
 
 <script>
+  "use strict";
+
   import requestURL from '@/utils/requestURL.js';
+  import stringToNumber from '@/utils/stringToNumber.js';
   
   export default {
     name: 'Write',
@@ -22,13 +25,18 @@
         let amount = document.getElementById('amount_field').value;
         let reason = document.getElementById('reason_field').value;
 
-        fetch(requestURL() + "/account/today", {
+        let amount_int = stringToNumber(amount);
+
+        fetch(requestURL() + "/detail/today", {
           method: "POST",
           body: JSON.stringify({
             type: select,
             detail: reason,
-            amount: amount,
+            amount: amount_int,
           }),
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }
         }).then(function(res) {
           return res.json();
         }).then(function(data) {
