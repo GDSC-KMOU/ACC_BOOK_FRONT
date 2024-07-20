@@ -9,6 +9,7 @@
   "use strict";
 
   import requestURL from '@/utils/requestURL.js';
+  
   import { ref } from 'vue';
 
   export default {
@@ -16,11 +17,13 @@
     setup() {
       const loginCheck = ref(true);
 
-      fetch(requestURL() + '/login/state').then(function(res) {
+      fetch(requestURL() + '/login/state', {
+        credentials: 'include'
+      }).then(function(res) {
         return res.json();
       }).then(function(data) {
         console.log(data);
-        if(data && data.data.result) {
+        if(data && data.data) {
           loginCheck.value = false;
         }
       });

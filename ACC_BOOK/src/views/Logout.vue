@@ -11,7 +11,8 @@
     name: 'Logout',
     setup() {
       fetch(requestURL() + "/logout", {
-        method: "POST"
+        method: "POST",
+        credentials: 'include'
       }).then(function(res) {
         return res.json();
       }).then(function(data) {

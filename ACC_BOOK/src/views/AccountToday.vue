@@ -33,35 +33,45 @@
   import requestURL from '@/utils/requestURL.js';
   import dateGet from '@/utils/date.js';
 
+  import { ref } from 'vue';
+
   export default {
     name: 'AccountToday',
     computed: {
       displayedItems() {
         return this.items;
-      } 
+      }
     },
-    mounted() { 
-      this.fetchData(1);
-    },
-    methods: {
-      fetchData(firstDo = 0) {
+    setup() {
+      const items = ref([]);
+      const fetchData = function(firstDo = 0) {
         let url = document.getElementById('date_field').value;
         if(firstDo === 1) {
           url = dateGet();
         }
         console.log(url);
 
-        fetch(requestURL() + "/detail/today/" + url).then(function(res) {
+        fetch(requestURL() + "/detail/today", {
+          credentials: 'include'
+        }).then(function(res) {
           return res.json();
         }).then(function(data) {
           console.log(data);
           if(data) {
-            this.items = data.data;
+            items.value = data.data;
           }
         }).catch(function(e) {
           console.log('서버 응답 없음');
         });
       }
-    }
+
+      return {
+        items,
+        fetchData
+      };
+    },
+    mounted() { 
+      this.fetchData(1);
+    },
   };
 </script>

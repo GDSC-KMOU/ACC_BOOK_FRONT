@@ -36,7 +36,8 @@
           }),
           headers: {
             'Content-Type': 'application/json; charset=utf-8'
-          }
+          },
+          credentials: 'include'
         }).then(function(res) {
           return res.json();
         }).then(function(data) {
