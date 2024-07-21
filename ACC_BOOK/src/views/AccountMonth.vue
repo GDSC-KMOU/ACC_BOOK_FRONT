@@ -11,6 +11,7 @@
         <th>유형</th>
         <th>금액</th>
         <th>세부내용</th>
+        <th>옵션</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
         <td>{{ item.type }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.detail }}</td>
+        <td><a :href="'/edit/' + item.index">수정</a></td>
       </tr>
     </tbody>
   </table>
@@ -51,7 +53,7 @@
         }
         console.log(url);
 
-        fetch(requestURL() + "/detail/today", {
+        fetch(requestURL() + "/detail/month/" + url, {
           credentials: 'include'
         }).then(function(res) {
           return res.json();

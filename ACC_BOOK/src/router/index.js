@@ -3,6 +3,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '@/views/Home.vue';
+import Edit from '@/views/Edit.vue';
 import Write from '@/views/Write.vue';
 import Login from '@/views/Login.vue';
 import Logout from '@/views/Logout.vue';
@@ -39,6 +40,10 @@ const routes = [
     path: '/logout',
     name: 'Logout',
     component: Logout,
+  }, {
+    path: '/edit/:id',
+    name: 'Edit',
+    component: Edit,
   },
 ];
 

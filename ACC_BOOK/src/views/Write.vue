@@ -27,7 +27,7 @@
 
         let amount_int = stringToNumber(amount);
 
-        fetch(requestURL() + "/detail/today", {
+        fetch(requestURL() + "/detail/today/", {
           method: "POST",
           body: JSON.stringify({
             type: select,
