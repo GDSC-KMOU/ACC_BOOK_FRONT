@@ -1,6 +1,8 @@
 <template>
-  <input id="date_field" type="date" @change="fetchData()" />
-  <br />
+  <input style="display: none;" id="date_field" type="date" @change="fetchData()" />
+  <ul>
+    <li>오늘의 날짜 : <TodayDate /></li>
+  </ul>
   <table>
     <thead>
       <tr>
@@ -11,6 +13,7 @@
         <th>유형</th>
         <th>금액</th>
         <th>세부내용</th>
+        <th>옵션</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +25,7 @@
         <td>{{ item.type }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.detail }}</td>
+        <td><a :href="'/edit/' + item.index">수정</a></td>
       </tr>
     </tbody>
   </table>
@@ -29,6 +33,8 @@
 
 <script>
   "use strict";
+
+  import TodayDate from '@/components/TodayDate.vue';
 
   import requestURL from '@/utils/requestURL.js';
   import dateGet from '@/utils/date.js';
@@ -73,5 +79,8 @@
     mounted() { 
       this.fetchData(1);
     },
+    components: {
+      TodayDate,
+    }
   };
 </script>

@@ -1,8 +1,10 @@
 <template>
-    <input id="date_field" type="date">
-    <br />
-    <input id="time_field" type="time">
-    <br />
+    <!--
+      <input id="date_field" type="date">
+      <br />
+      <input id="time_field" type="time">
+      <br />
+    -->
     <select id="select_field">
       <option value="+">수입</option>
       <option value="-">지출</option>
@@ -18,14 +20,21 @@
 <script>
   "use strict";
 
-  import { useRoute } from 'vue-router'
+  import requestURL from '@/utils/requestURL.js';
+  import stringToNumber from '@/utils/stringToNumber.js';
 
-  const route = useRoute();
+  import { useRoute } from 'vue-router'
 
   export default {
     name: 'Edit',
-    mounted() { 
+    setup() {
+      const route = useRoute();
 
+      let id = route.params.id;
+
+      return {
+        id
+      };
     },
     methods : {
       send_request() {
@@ -34,12 +43,12 @@
         let select = document.getElementById('select_field').value;
         let amount = document.getElementById('amount_field').value;
         let reason = document.getElementById('reason_field').value;
-        let id = route.params.id;
-
+        let id = this.id;
+        
         let amount_int = stringToNumber(amount);
 
-        fetch(requestURL() + "/detail/today", {
-          method: "POST",
+        fetch(requestURL() + "/detail/today/edit", {
+          method: "PATCH",
           body: JSON.stringify({
             index: id,
             date: date,
@@ -55,7 +64,9 @@
         }).then(function(res) {
           return res.json();
         }).then(function(data) {
-          console.log(data);
+          if(data) {
+            window.location.pathname = '/detail/month';
+          }
         });
       }
     }

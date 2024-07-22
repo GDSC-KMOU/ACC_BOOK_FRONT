@@ -38,7 +38,7 @@
   import { ref } from 'vue';
 
   export default {
-    name: 'AccountToday',
+    name: 'AccountMonth',
     computed: {
       displayedItems() {
         return this.items;

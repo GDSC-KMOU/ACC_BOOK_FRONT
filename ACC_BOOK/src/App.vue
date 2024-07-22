@@ -3,7 +3,6 @@
     <nav>
       <span>가계부 프로젝트</span>
       <ul>
-        <li><a href="/">메인</a></li>
         <li><a href="/account/today">오늘</a></li>
         <li><a href="/account/month">월별</a></li>
         <LoginButton />
@@ -24,7 +23,7 @@
 
 <script>
   "use strict";
-  
+
   import LoginButton from '@/components/LoginButton.vue';
 
   export default {
