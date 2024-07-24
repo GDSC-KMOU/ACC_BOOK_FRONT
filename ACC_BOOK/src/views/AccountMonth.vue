@@ -1,6 +1,10 @@
 <template>
   <input id="date_field" type="month" @change="fetchData()" />
   <br />
+  <ul>
+    <li>이 달의 지출 : {{ out_money }}</li>
+    <li>이 달의 수입 : {{ in_money }}</li>
+  </ul>
   <table>
     <thead>
       <tr>
@@ -46,6 +50,9 @@
     },
     setup() {
       const items = ref([]);
+      const out_money = ref(0);
+      const in_money = ref(0);
+
       const fetchData = function(firstDo = 0) {
         let url = document.getElementById('date_field').value;
         if(firstDo === 1) {
@@ -61,6 +68,14 @@
           console.log(data);
           if(data) {
             items.value = data.data;
+
+            for(let for_a = 0; for_a < data.data.length; for_a++) {
+              if(data.data[for_a].type === '-') {
+                out_money.value += data.data[for_a].amount;
+              } else {
+                in_money.value += data.data[for_a].amount;
+              }
+            }
           }
         }).catch(function(e) {
           console.log('서버 응답 없음');
@@ -69,7 +84,9 @@
 
       return {
         items,
-        fetchData
+        fetchData,
+        out_money,
+        in_money
       };
     },
     mounted() { 

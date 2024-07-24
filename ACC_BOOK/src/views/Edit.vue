@@ -1,10 +1,6 @@
 <template>
-    <!--
-      <input id="date_field" type="date">
-      <br />
-      <input id="time_field" type="time">
-      <br />
-    -->
+    <input style="display: none;" id="date_field" type="date">
+    <input style="display: none;" id="time_field" type="time">
     <select id="select_field">
       <option value="+">수입</option>
       <option value="-">지출</option>
@@ -65,7 +61,7 @@
           return res.json();
         }).then(function(data) {
           if(data) {
-            window.location.pathname = '/detail/month';
+            window.location.pathname = '/account/month';
           }
         });
       }
